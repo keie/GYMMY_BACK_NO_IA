@@ -1,6 +1,7 @@
 ﻿using ApiLogic.Interfaces.General;
 using ApiLogic.Interfaces.Routine;
 using ApiModel.RequestDTO.Routine;
+using ApiModel.ResponseDTO.Routine;
 using ApiModel.Routine;
 using ApiUnitOfWork.General;
 using System;
@@ -67,6 +68,30 @@ namespace ApiLogic.Implementations.Routine
             try
             {
                 return _unitOfWork.IRoutineCategory.GetList();
+            }
+            catch (Exception e)
+            {
+                throw _logicExceptionCustomizedLogic.Decision(_option, e);
+            }
+        }
+
+        public IEnumerable<RoutineCategoryResponseDTO> GetRoutineByEquipment(int idEquipment)
+        {
+            try
+            {
+                return _unitOfWork.IRoutineCategory.GetRoutineByEquipment(idEquipment);
+            }
+            catch (Exception e)
+            {
+                throw _logicExceptionCustomizedLogic.Decision(_option, e);
+            }
+        }
+
+        public IEnumerable<RoutineResponseDTO> GetRoutineByEquipmentAndRoutineCategory(int idEquipment, int IdRoutindCategory)
+        {
+            try
+            {
+                return _unitOfWork.IRoutineCategory.GetRoutineByEquipmentAndRoutineCategory(idEquipment, IdRoutindCategory);
             }
             catch (Exception e)
             {

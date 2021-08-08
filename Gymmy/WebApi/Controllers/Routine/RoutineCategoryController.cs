@@ -76,5 +76,34 @@ namespace WebApi.Controllers.Routine
                 return BadRequest(_ResponseDTO.Failed(_ResponseDTO, e));
             }
         }
+        [HttpGet]
+        [Route("byMachine/{id:int}")]
+        public IActionResult GetRoutineByEquipment(int id)
+        {
+            _ResponseDTO = new ResponseDTO();
+            try
+            {
+                return Ok(_ResponseDTO.Success(_ResponseDTO, _logic.GetRoutineByEquipment(id)));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(_ResponseDTO.Failed(_ResponseDTO, e));
+            }
+        }
+        [HttpGet]
+        [Route("byMachineAndRoutineCategory/{idEquipment:int},{idRoutineCategory:int}")]
+        public IActionResult GetRoutineByEquipmentAndRoutineCategory(int idEquipment, int idRoutineCategory)
+        {
+            _ResponseDTO = new ResponseDTO();
+            try
+            {
+                return Ok(_ResponseDTO.Success(_ResponseDTO, _logic.GetRoutineByEquipmentAndRoutineCategory(idEquipment, idRoutineCategory)));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(_ResponseDTO.Failed(_ResponseDTO, e));
+            }
+        }
+
     }
 }
