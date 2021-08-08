@@ -9,6 +9,7 @@ namespace JWT.Authentication
     using System.Security.Cryptography;
     using System.Text.Json;
     using ApiModel;
+    using ApiModel.Profile;
     using Microsoft.IdentityModel.Tokens;
   
 
@@ -31,10 +32,8 @@ namespace JWT.Authentication
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
             var identity = new ClaimsIdentity(new List<Claim>()
             {
-                new Claim(ClaimTypes.Name,$"{user.name+" "}{" "+user.lastname}"),
-               // new Claim("photoUser",user.photoUser==null?"noPhoto":user.photoUser),
-              //  new Claim(ClaimTypes.Role,JsonSerializer.Serialize(user.Roles)),
-                new Claim(ClaimTypes.PrimarySid,user.id.ToString())
+                new Claim(ClaimTypes.Name,$"{user.Name+" "}{" "+user.Email}"),
+                new Claim(ClaimTypes.PrimarySid,user.Id.ToString())
             }, "User");
             SecurityToken token = tokenHandler.CreateJwtSecurityToken(new SecurityTokenDescriptor
             {
