@@ -1,8 +1,0 @@
-C:\Users\hombr\Desktop\Tesis\back\Gymmy\Settings\bin\Debug\netcoreapp3.1\Settings.deps.json
-C:\Users\hombr\Desktop\Tesis\back\Gymmy\Settings\bin\Debug\netcoreapp3.1\Settings.dll
-C:\Users\hombr\Desktop\Tesis\back\Gymmy\Settings\bin\Debug\netcoreapp3.1\Settings.pdb
-C:\Users\hombr\Desktop\Tesis\back\Gymmy\Settings\obj\Debug\netcoreapp3.1\Settings.AssemblyInfoInputs.cache
-C:\Users\hombr\Desktop\Tesis\back\Gymmy\Settings\obj\Debug\netcoreapp3.1\Settings.AssemblyInfo.cs
-C:\Users\hombr\Desktop\Tesis\back\Gymmy\Settings\obj\Debug\netcoreapp3.1\Settings.csproj.CoreCompileInputs.cache
-C:\Users\hombr\Desktop\Tesis\back\Gymmy\Settings\obj\Debug\netcoreapp3.1\Settings.dll
-C:\Users\hombr\Desktop\Tesis\back\Gymmy\Settings\obj\Debug\netcoreapp3.1\Settings.pdb
