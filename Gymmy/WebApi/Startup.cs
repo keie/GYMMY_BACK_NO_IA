@@ -1,8 +1,16 @@
 using ApiDataAccess.General;
+using ApiLogic.Implementations.Equipment;
+using ApiLogic.Implementations.Exercise;
 using ApiLogic.Implementations.JWT;
+using ApiLogic.Implementations.Marker;
 using ApiLogic.Implementations.Profile;
+using ApiLogic.Implementations.Routine;
+using ApiLogic.Interfaces.Equipment;
+using ApiLogic.Interfaces.Exercise;
 using ApiLogic.Interfaces.JWT;
+using ApiLogic.Interfaces.Marker;
 using ApiLogic.Interfaces.Profile;
+using ApiLogic.Interfaces.Routine;
 using ApiUnitOfWork.General;
 using JWT.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -40,6 +48,12 @@ namespace WebApi
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             services.AddTransient<IUserLogic,UserLogic>();
             services.AddTransient<ITokenLogic, TokenLogic>();
+            services.AddTransient<IEquipmentLogic, EquipmentLogic>();
+            services.AddTransient<IExerciseLogic, ExerciseLogic>();
+            services.AddTransient<IMarkerLogic, MarkerLogic>();
+            services.AddTransient<IRoutineLogic, RoutineLogic>();
+            services.AddTransient<IRoutineCategoryLogic, RoutineCategoryLogic>();
+            services.AddTransient<IRoutineCategoryLevelLogic, RoutineCategoryLevelLogic>();
             services.AddSingleton<IUnitOfWork>(option => new UnitOfWork(
                     Configuration.GetConnectionString("gymmy")
             ));
