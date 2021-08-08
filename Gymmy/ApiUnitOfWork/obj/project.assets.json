@@ -1,11 +1,48 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "ApiModel/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/ApiModel.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ApiModel.dll": {}
+        }
+      },
+      "ApiRepositories/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "ApiModel": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ApiRepositories.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ApiRepositories.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "ApiModel/1.0.0": {
+      "type": "project",
+      "path": "../ApiModel/ApiModel.csproj",
+      "msbuildProject": "../ApiModel/ApiModel.csproj"
+    },
+    "ApiRepositories/1.0.0": {
+      "type": "project",
+      "path": "../ApiRepositories/ApiRepositories.csproj",
+      "msbuildProject": "../ApiRepositories/ApiRepositories.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "ApiRepositories >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\hombr\\.nuget\\packages\\": {},
@@ -43,7 +80,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\hombr\\Desktop\\Tesis\\back\\Gymmy\\ApiRepositories\\ApiRepositories.csproj": {
+              "projectPath": "C:\\Users\\hombr\\Desktop\\Tesis\\back\\Gymmy\\ApiRepositories\\ApiRepositories.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

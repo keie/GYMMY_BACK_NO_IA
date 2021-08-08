@@ -5,8 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Implementations\" />
-    <Folder Include="Interfaces\" />
+    <ProjectReference Include="..\ApiUnitOfWork\ApiUnitOfWork.csproj" />
+    <ProjectReference Include="..\Encryption\Encryption.csproj" />
+    <ProjectReference Include="..\JWT\JWT.csproj" />
   </ItemGroup>
 
 </Project>

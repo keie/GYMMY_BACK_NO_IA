@@ -1,0 +1,14 @@
+C:\Users\hombr\Desktop\Tesis\back\Gymmy\ApiUnitOfWork\bin\Debug\netcoreapp3.1\ApiUnitOfWork.deps.json
+C:\Users\hombr\Desktop\Tesis\back\Gymmy\ApiUnitOfWork\bin\Debug\netcoreapp3.1\ApiUnitOfWork.dll
+C:\Users\hombr\Desktop\Tesis\back\Gymmy\ApiUnitOfWork\bin\Debug\netcoreapp3.1\ApiUnitOfWork.pdb
+C:\Users\hombr\Desktop\Tesis\back\Gymmy\ApiUnitOfWork\bin\Debug\netcoreapp3.1\ApiModel.dll
+C:\Users\hombr\Desktop\Tesis\back\Gymmy\ApiUnitOfWork\bin\Debug\netcoreapp3.1\ApiRepositories.dll
+C:\Users\hombr\Desktop\Tesis\back\Gymmy\ApiUnitOfWork\bin\Debug\netcoreapp3.1\ApiRepositories.pdb
+C:\Users\hombr\Desktop\Tesis\back\Gymmy\ApiUnitOfWork\bin\Debug\netcoreapp3.1\ApiModel.pdb
+C:\Users\hombr\Desktop\Tesis\back\Gymmy\ApiUnitOfWork\obj\Debug\netcoreapp3.1\ApiUnitOfWork.csprojAssemblyReference.cache
+C:\Users\hombr\Desktop\Tesis\back\Gymmy\ApiUnitOfWork\obj\Debug\netcoreapp3.1\ApiUnitOfWork.AssemblyInfoInputs.cache
+C:\Users\hombr\Desktop\Tesis\back\Gymmy\ApiUnitOfWork\obj\Debug\netcoreapp3.1\ApiUnitOfWork.AssemblyInfo.cs
+C:\Users\hombr\Desktop\Tesis\back\Gymmy\ApiUnitOfWork\obj\Debug\netcoreapp3.1\ApiUnitOfWork.csproj.CoreCompileInputs.cache
+C:\Users\hombr\Desktop\Tesis\back\Gymmy\ApiUnitOfWork\obj\Debug\netcoreapp3.1\ApiUnitOfWork.csproj.CopyComplete
+C:\Users\hombr\Desktop\Tesis\back\Gymmy\ApiUnitOfWork\obj\Debug\netcoreapp3.1\ApiUnitOfWork.dll
+C:\Users\hombr\Desktop\Tesis\back\Gymmy\ApiUnitOfWork\obj\Debug\netcoreapp3.1\ApiUnitOfWork.pdb
