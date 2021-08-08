@@ -1,12 +1,14 @@
 using ApiDataAccess.General;
 using ApiLogic.Implementations.Equipment;
 using ApiLogic.Implementations.Exercise;
+using ApiLogic.Implementations.General;
 using ApiLogic.Implementations.JWT;
 using ApiLogic.Implementations.Marker;
 using ApiLogic.Implementations.Profile;
 using ApiLogic.Implementations.Routine;
 using ApiLogic.Interfaces.Equipment;
 using ApiLogic.Interfaces.Exercise;
+using ApiLogic.Interfaces.General;
 using ApiLogic.Interfaces.JWT;
 using ApiLogic.Interfaces.Marker;
 using ApiLogic.Interfaces.Profile;
@@ -54,8 +56,9 @@ namespace WebApi
             services.AddTransient<IRoutineLogic, RoutineLogic>();
             services.AddTransient<IRoutineCategoryLogic, RoutineCategoryLogic>();
             services.AddTransient<IRoutineCategoryLevelLogic, RoutineCategoryLevelLogic>();
+            services.AddTransient<IExceptionCustomizedLogic, ExceptionCustomizedLogic>();
             services.AddSingleton<IUnitOfWork>(option => new UnitOfWork(
-                    Configuration.GetConnectionString("gymmy")
+                    Configuration.GetConnectionString("gymmy-minerva")
             ));
             var tokenProvider = new JwtProvider("issuer", "audience", "profexorrr_20000");
             services.AddSingleton<ITokenProvider>(tokenProvider);

@@ -1,4 +1,5 @@
-﻿using ApiLogic.Interfaces.JWT;
+﻿using ApiLogic.Interfaces.General;
+using ApiLogic.Interfaces.JWT;
 using ApiModel.RequestDTO;
 using ApiUnitOfWork.General;
 using Encryption;
@@ -15,10 +16,15 @@ namespace ApiLogic.Implementations.JWT
         private readonly IUnitOfWork _unitOfWork;
         private ITokenProvider _tokenProvider;
         private Encrypt _encryptionService;
-        public TokenLogic(ITokenProvider tokenProvider, IUnitOfWork unitOfWork)
+        private IExceptionCustomizedLogic _logicExceptionCustomizedLogic;
+        private string _option;
+
+        public TokenLogic(ITokenProvider tokenProvider, IUnitOfWork unitOfWork, IExceptionCustomizedLogic logicExceptionCustomizedLogic)
         {
             _unitOfWork = unitOfWork;
             _tokenProvider = tokenProvider;
+            _logicExceptionCustomizedLogic = logicExceptionCustomizedLogic;
+            _option = "Token";
         }
         public string EncryptPass(string password)
         {
@@ -48,9 +54,9 @@ namespace ApiLogic.Implementations.JWT
                 return token;
                
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                throw new Exception(e.Message);
+                throw _logicExceptionCustomizedLogic.Decision(_option, e);
             }
         }
     }

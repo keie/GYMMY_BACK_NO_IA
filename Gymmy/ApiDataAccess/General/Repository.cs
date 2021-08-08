@@ -2,6 +2,7 @@
 using Dapper.Contrib.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text;
 
 namespace ApiDataAccess.General
@@ -9,34 +10,50 @@ namespace ApiDataAccess.General
     public class Repository<T> : IRepository<T> where T : class
     {
         protected string _connectionString;
+
         public Repository(string _connectionString)
         {
             SqlMapperExtensions.TableNameMapper = (type) => { return $"[{type.Name}]"; };
             this._connectionString = _connectionString;
         }
-        public bool Delete(T entity)
+        public virtual bool Delete(T entity)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                return connection.Delete(entity);
+            }
         }
 
-        public T GetById(long id)
+        public virtual T GetById(Int64 id)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                return connection.Get<T>((Int64)id);
+            }
         }
 
-        public IEnumerable<T> GetList()
+        public virtual IEnumerable<T> GetList()
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                return connection.GetAll<T>();
+            }
         }
 
-        public int Insert(T entity)
+        public virtual int Insert(T entity)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                return (int)connection.Insert(entity);
+            }
         }
 
-        public bool Update(T entity)
+        public virtual bool Update(T entity)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                return connection.Update(entity);
+            }
         }
     }
 }

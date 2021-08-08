@@ -1,5 +1,6 @@
 ﻿using ApiLogic.Interfaces.JWT;
 using ApiModel.RequestDTO;
+using ApiModel.ResponseDTO.General;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace WebApi.Controllers.JWT
     public class TokenController : Controller
     {
         private readonly ITokenLogic _logic;
+        private ResponseDTO _ResponseDTO;
 
         public TokenController(ITokenLogic logic)
         {
@@ -27,13 +29,14 @@ namespace WebApi.Controllers.JWT
         [HttpPost]
         public IActionResult ProcessToken([FromBody] LoginRequestDTO userLogin)
         {
+            _ResponseDTO = new ResponseDTO();
             try
             {
-                return Ok(_logic.ProcessToken(userLogin));
+                return Ok(_ResponseDTO.Success(_ResponseDTO, _logic.ProcessToken(userLogin)));
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);
+                return BadRequest(_ResponseDTO.Failed(_ResponseDTO, e));
             }
         }
     }
