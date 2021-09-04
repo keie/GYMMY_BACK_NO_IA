@@ -1,4 +1,4 @@
-﻿using ApiLogic.Interfaces.Equipment;
+﻿using ApiLogic.Interfaces.EquipmentLogic;
 using ApiModel.RequestDTO.Equipment;
 using ApiModel.ResponseDTO.General;
 using Microsoft.AspNetCore.Mvc;

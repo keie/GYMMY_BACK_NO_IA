@@ -75,11 +75,26 @@ namespace ApiLogic.Implementations.Routine
             }
         }
 
-        public IEnumerable<RoutineCategoryResponseDTO> GetRoutineByEquipment(int idEquipment)
+        public RoutineCategoryWithListRoutinesResponseDTO GetRoutineByEquipment(int idEquipment)
         {
+            RoutineCategoryWithListRoutinesResponseDTO dto = new RoutineCategoryWithListRoutinesResponseDTO();
             try
             {
-                return _unitOfWork.IRoutineCategory.GetRoutineByEquipment(idEquipment);
+                var list = _unitOfWork.IRoutineCategory.GetRoutineByEquipment(idEquipment);
+                foreach (var x in list)
+                {
+                    List<RoutineCategory> routines = new List<RoutineCategory>();
+                    dto.Equipment = x.Equipment;
+                    foreach (var y in list)
+                    {
+                        if (x.Equipment.Id == y.Equipment.Id)
+                        {
+                            routines.Add(y.RoutineCategory);
+                        }
+                    }
+                    dto.Routines = routines;
+                }
+                return dto;
             }
             catch (Exception e)
             {

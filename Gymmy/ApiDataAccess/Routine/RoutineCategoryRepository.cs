@@ -1,4 +1,5 @@
 ﻿using ApiDataAccess.General;
+using ApiModel.EquipmentModel;
 using ApiModel.ResponseDTO.Routine;
 using ApiModel.Routine;
 using ApiRepositories.Routine;
@@ -23,15 +24,19 @@ namespace ApiDataAccess.Routine
             {
                 pIdEquipment=idEquipment
             });
-            string sql = @"select distinct(rc.[description]),rc.id,rc.[name],rc.photo from RoutineCategory rc inner join
+            string sql = @"select  distinct(rc.[description]) as description,rc.id,rc.[name],rc.photo,e.id,e.[name],e.description,e.photo from RoutineCategory rc inner join
                         RoutineCategoryLevel rcl on rc.id=rcl.idRoutineCategory  inner join 
                         Routine r on r.idRoutineCategoryLevel=rcl.id inner join
                         Equipment e on e.id=r.idEquipment WHERE r.idEquipment=@pIdEquipment";
             using(var connection=new SqlConnection(_connectionString))
             {
-                return connection.Query<RoutineCategoryResponseDTO>(
-                    sql, dynamicParameters
-                    );
+                return connection.Query<RoutineCategory,Equipment, RoutineCategoryResponseDTO>(
+                    sql, (routineCategory,equipment) => {
+                        RoutineCategoryResponseDTO dto = new RoutineCategoryResponseDTO();
+                        dto.RoutineCategory = routineCategory;
+                        dto.Equipment = equipment;
+                        return dto;
+                    },dynamicParameters);
             }
         }
 

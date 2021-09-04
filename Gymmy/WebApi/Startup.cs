@@ -1,12 +1,12 @@
 using ApiDataAccess.General;
-using ApiLogic.Implementations.Equipment;
+using ApiLogic.Implementations.EquipmentLogic;
 using ApiLogic.Implementations.Exercise;
 using ApiLogic.Implementations.General;
 using ApiLogic.Implementations.JWT;
 using ApiLogic.Implementations.Marker;
 using ApiLogic.Implementations.Profile;
 using ApiLogic.Implementations.Routine;
-using ApiLogic.Interfaces.Equipment;
+using ApiLogic.Interfaces.EquipmentLogic;
 using ApiLogic.Interfaces.Exercise;
 using ApiLogic.Interfaces.General;
 using ApiLogic.Interfaces.JWT;

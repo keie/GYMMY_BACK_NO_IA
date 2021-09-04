@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ApiModel.EquipmentModel;
+using ApiModel.Routine;
 
 namespace ApiModel.ResponseDTO.Routine
 {
     public class RoutineCategoryResponseDTO
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Photo { get; set; }
+        public Equipment Equipment { get; set; }
+        public RoutineCategory RoutineCategory { get; set; }
     }
 }

@@ -1,9 +1,9 @@
-﻿using ApiDataAccess.Equipment;
+﻿using ApiDataAccess.EquipmentRepo;
 using ApiDataAccess.Exercise;
 using ApiDataAccess.Marker;
 using ApiDataAccess.Profile;
 using ApiDataAccess.Routine;
-using ApiRepositories.Equipment;
+using ApiRepositories.EquipmentRepo;
 using ApiRepositories.Exercise;
 using ApiRepositories.Marker;
 using ApiRepositories.Profile;
