@@ -58,7 +58,7 @@ namespace WebApi
             services.AddTransient<IRoutineCategoryLevelLogic, RoutineCategoryLevelLogic>();
             services.AddTransient<IExceptionCustomizedLogic, ExceptionCustomizedLogic>();
             services.AddSingleton<IUnitOfWork>(option => new UnitOfWork(
-                    Configuration.GetConnectionString("gymmy")
+                    Configuration.GetConnectionString("gymmy-minerva")
             ));
             var tokenProvider = new JwtProvider("issuer", "audience", "profexorrr_20000");
             services.AddSingleton<ITokenProvider>(tokenProvider);
