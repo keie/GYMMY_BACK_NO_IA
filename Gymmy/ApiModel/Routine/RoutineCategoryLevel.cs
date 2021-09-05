@@ -11,6 +11,7 @@ namespace ApiModel.Routine
         public string Name { get; set; }
         public string Description { get; set; }
         public string Photo { get; set; }
+        public int IdRoutineCategory { get; set; }
 
         public RoutineCategoryLevel Mapper(RoutineCategoryLevel obj, RoutineCategoryLevelRequestDTO dto)
         {
@@ -18,6 +19,7 @@ namespace ApiModel.Routine
             obj.Name = dto.Name;
             obj.Description = dto.Description;
             obj.Photo = dto.Photo;
+            obj.IdRoutineCategory = dto.IdRoutineCategory;
 
             return obj;
         }

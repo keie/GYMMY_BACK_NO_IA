@@ -75,6 +75,30 @@ namespace ApiLogic.Implementations.Routine
             }
         }
 
+        public IList<RoutineCategoryWithLevelsResponseDTO> GetListWithLevels()
+        {
+            IList<RoutineCategoryWithLevelsResponseDTO> response = new List<RoutineCategoryWithLevelsResponseDTO>();
+            try
+            {                
+                var list = _unitOfWork.IRoutineCategory.GetList();
+                var levelList = new List<RoutineCategoryLevel>(_unitOfWork.IRoutineCategoryLevel.GetList());
+                foreach (var routineCategory in list)
+                {
+                    RoutineCategoryWithLevelsResponseDTO categoryWithLevel = new RoutineCategoryWithLevelsResponseDTO();
+
+                    categoryWithLevel.RoutineCategory = routineCategory;
+                    categoryWithLevel.RoutineCategoryLevels = levelList.FindAll(level => level.IdRoutineCategory == routineCategory.Id);
+
+                    response.Add(categoryWithLevel);
+                }
+                return response;
+            }
+            catch (Exception e)
+            {
+                throw _logicExceptionCustomizedLogic.Decision(_option, e);
+            }
+        }
+
         public RoutineCategoryWithListRoutinesResponseDTO GetRoutineByEquipment(int idEquipment)
         {
             RoutineCategoryWithListRoutinesResponseDTO dto = new RoutineCategoryWithListRoutinesResponseDTO();

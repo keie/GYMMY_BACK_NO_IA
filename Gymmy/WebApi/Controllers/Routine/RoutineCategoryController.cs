@@ -63,6 +63,21 @@ namespace WebApi.Controllers.Routine
         }
 
         [HttpGet]
+        [Route("levels")]
+        public IActionResult GetListWithLevels()
+        {
+            _ResponseDTO = new ResponseDTO();
+            try
+            {
+                return Ok(_ResponseDTO.Success(_ResponseDTO, _logic.GetListWithLevels()));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(_ResponseDTO.Failed(_ResponseDTO, e));
+            }
+        }
+
+        [HttpGet]
         [Route("{id:int}")]
         public IActionResult GetById(int id)
         {

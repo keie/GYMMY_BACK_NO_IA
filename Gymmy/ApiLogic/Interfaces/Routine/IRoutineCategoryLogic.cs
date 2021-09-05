@@ -13,6 +13,7 @@ namespace ApiLogic.Interfaces.Routine
         public bool Update(RoutineCategoryRequestDTO dto);
         public RoutineCategory GetById(int id);
         public IEnumerable<RoutineCategory> GetList();
+        public IList<RoutineCategoryWithLevelsResponseDTO> GetListWithLevels();
         public RoutineCategoryWithListRoutinesResponseDTO GetRoutineByEquipment(int idEquipment);
         public IEnumerable<RoutineResponseDTO> GetRoutineByEquipmentAndRoutineCategory(int idEquipment, int IdRoutindCategory);
     }
