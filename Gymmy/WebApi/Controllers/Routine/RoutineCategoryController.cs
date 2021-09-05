@@ -135,5 +135,20 @@ namespace WebApi.Controllers.Routine
             }
         }
 
+        [HttpGet]
+        [Route("byRoutineCategoryLevel/{idRoutineCategoryLevel:int}")]
+        public IActionResult GetRoutineExercisesByRoutineCategoryLevel(int idRoutineCategoryLevel)
+        {
+            _ResponseDTO = new ResponseDTO();
+            try
+            {
+                return Ok(_ResponseDTO.Success(_ResponseDTO, _logic.GetRoutineExercisesByRoutineCategoryLevel(idRoutineCategoryLevel)));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(_ResponseDTO.Failed(_ResponseDTO, e));
+            }
+        }
+
     }
 }
