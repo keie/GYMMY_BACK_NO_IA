@@ -32,7 +32,7 @@ namespace JWT.Authentication
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
             var identity = new ClaimsIdentity(new List<Claim>()
             {
-                new Claim(ClaimTypes.Name,$"{user.Name+" "}{" "+user.Email}"),
+                new Claim(ClaimTypes.Name,$"{user.Id};{user.Name};{user.Email};{user.Photo}"),
                 new Claim(ClaimTypes.PrimarySid,user.Id.ToString())
             }, "User");
             SecurityToken token = tokenHandler.CreateJwtSecurityToken(new SecurityTokenDescriptor
