@@ -137,5 +137,17 @@ namespace ApiLogic.Implementations.Routine
                 throw _logicExceptionCustomizedLogic.Decision(_option, e);
             }
         }
+
+        public IEnumerable<RoutineCategoryLevelExerciseResponseDTO> GetRoutineExercisesByRoutineCategoryLevel(int idRoutineCategoryLevel)
+        {
+            try
+            {
+                return _unitOfWork.IRoutineCategory.GetRoutineExercisesByRoutineCategoryLevel(idRoutineCategoryLevel);
+            }
+            catch (Exception e)
+            {
+                throw _logicExceptionCustomizedLogic.Decision(_option, e);
+            }
+        }
     }
 }

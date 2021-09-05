@@ -11,5 +11,6 @@ namespace ApiRepositories.Routine
     {
         public IEnumerable<RoutineCategoryResponseDTO> GetRoutineByEquipment(int idEquipment);
         public IEnumerable<RoutineResponseDTO> GetRoutineByEquipmentAndRoutineCategory(int idEquipment,int IdRoutindCategory);
+        public IEnumerable<RoutineCategoryLevelExerciseResponseDTO> GetRoutineExercisesByRoutineCategoryLevel(int idRoutineCategoryLevel);
     }
 }
