@@ -1,6 +1,7 @@
 ﻿using ApiLogic.Interfaces.General;
 using ApiLogic.Interfaces.Routine;
 using ApiModel.RequestDTO.Routine;
+using ApiModel.ResponseDTO.Routine;
 using ApiModel.Routine;
 using ApiUnitOfWork.General;
 using System;
@@ -67,6 +68,45 @@ namespace ApiLogic.Implementations.Routine
             try
             {
                 return _unitOfWork.IRoutineCategory.GetList();
+            }
+            catch (Exception e)
+            {
+                throw _logicExceptionCustomizedLogic.Decision(_option, e);
+            }
+        }
+
+        public RoutineCategoryWithListRoutinesResponseDTO GetRoutineByEquipment(int idEquipment)
+        {
+            RoutineCategoryWithListRoutinesResponseDTO dto = new RoutineCategoryWithListRoutinesResponseDTO();
+            try
+            {
+                var list = _unitOfWork.IRoutineCategory.GetRoutineByEquipment(idEquipment);
+                foreach (var x in list)
+                {
+                    List<RoutineCategory> routines = new List<RoutineCategory>();
+                    dto.Equipment = x.Equipment;
+                    foreach (var y in list)
+                    {
+                        if (x.Equipment.Id == y.Equipment.Id)
+                        {
+                            routines.Add(y.RoutineCategory);
+                        }
+                    }
+                    dto.Routines = routines;
+                }
+                return dto;
+            }
+            catch (Exception e)
+            {
+                throw _logicExceptionCustomizedLogic.Decision(_option, e);
+            }
+        }
+
+        public IEnumerable<RoutineResponseDTO> GetRoutineByEquipmentAndRoutineCategory(int idEquipment, int IdRoutindCategory)
+        {
+            try
+            {
+                return _unitOfWork.IRoutineCategory.GetRoutineByEquipmentAndRoutineCategory(idEquipment, IdRoutindCategory);
             }
             catch (Exception e)
             {

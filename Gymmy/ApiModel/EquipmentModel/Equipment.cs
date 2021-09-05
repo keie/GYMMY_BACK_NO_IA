@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApiModel.Equipment
+namespace ApiModel.EquipmentModel
 {
     public class Equipment
     {

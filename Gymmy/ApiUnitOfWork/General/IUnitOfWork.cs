@@ -2,7 +2,7 @@
 
 namespace ApiUnitOfWork.General
 {
-    using ApiRepositories.Equipment;
+    using ApiRepositories.EquipmentRepo;
     using ApiRepositories.Exercise;
     using ApiRepositories.Marker;
     using ApiRepositories.Profile;

@@ -1,12 +1,13 @@
-﻿using ApiLogic.Interfaces.Equipment;
+﻿using ApiLogic.Interfaces.EquipmentLogic;
 using ApiLogic.Interfaces.General;
+using ApiModel.EquipmentModel;
 using ApiModel.RequestDTO.Equipment;
 using ApiUnitOfWork.General;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApiLogic.Implementations.Equipment
+namespace ApiLogic.Implementations.EquipmentLogic
 {
     public class EquipmentLogic : IEquipmentLogic
     {
@@ -24,7 +25,7 @@ namespace ApiLogic.Implementations.Equipment
 
         public int Insert(EquipmentRequestDTO dto)
         {
-            ApiModel.Equipment.Equipment obj = new ApiModel.Equipment.Equipment();
+            Equipment obj = new Equipment();
             try
             { 
                 return _unitOfWork.IEquipment.Insert(obj.Mapper(obj, dto));
@@ -37,7 +38,7 @@ namespace ApiLogic.Implementations.Equipment
 
         public bool Update(EquipmentRequestDTO dto)
         {
-            ApiModel.Equipment.Equipment obj = new ApiModel.Equipment.Equipment();
+            Equipment obj = new Equipment();
             try 
             { 
                 return _unitOfWork.IEquipment.Update(obj.Mapper(obj, dto));
@@ -48,7 +49,7 @@ namespace ApiLogic.Implementations.Equipment
             }
         }
 
-        public ApiModel.Equipment.Equipment GetById(int id)
+        public Equipment GetById(int id)
         {
             try
             { 
@@ -60,7 +61,7 @@ namespace ApiLogic.Implementations.Equipment
             }
         }
 
-        public IEnumerable<ApiModel.Equipment.Equipment> GetList()
+        public IEnumerable<Equipment> GetList()
         {
             try 
             { 

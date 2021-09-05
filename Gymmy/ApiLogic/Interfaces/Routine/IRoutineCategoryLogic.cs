@@ -1,4 +1,5 @@
 ﻿using ApiModel.RequestDTO.Routine;
+using ApiModel.ResponseDTO.Routine;
 using ApiModel.Routine;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,7 @@ namespace ApiLogic.Interfaces.Routine
         public bool Update(RoutineCategoryRequestDTO dto);
         public RoutineCategory GetById(int id);
         public IEnumerable<RoutineCategory> GetList();
+        public RoutineCategoryWithListRoutinesResponseDTO GetRoutineByEquipment(int idEquipment);
+        public IEnumerable<RoutineResponseDTO> GetRoutineByEquipmentAndRoutineCategory(int idEquipment, int IdRoutindCategory);
     }
 }

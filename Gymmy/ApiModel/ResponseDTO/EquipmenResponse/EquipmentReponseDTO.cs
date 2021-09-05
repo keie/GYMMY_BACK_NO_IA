@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApiModel.ResponseDTO.Equipment
+namespace ApiModel.ResponseDTO.EquipmentResponse
 {
     public class EquipmentReponseDTO
     {

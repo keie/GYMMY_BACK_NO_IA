@@ -1,15 +1,16 @@
-﻿using ApiModel.RequestDTO.Equipment;
+﻿using ApiModel.EquipmentModel;
+using ApiModel.RequestDTO.Equipment;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApiLogic.Interfaces.Equipment
+namespace ApiLogic.Interfaces.EquipmentLogic
 {
     public interface IEquipmentLogic
     {
         public int Insert(EquipmentRequestDTO dto);
         public bool Update(EquipmentRequestDTO dto);
-        public ApiModel.Equipment.Equipment GetById(int id);
-        public IEnumerable<ApiModel.Equipment.Equipment> GetList();
+        public Equipment GetById(int id);
+        public IEnumerable<Equipment> GetList();
     }
 }
