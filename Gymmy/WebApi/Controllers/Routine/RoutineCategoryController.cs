@@ -91,6 +91,21 @@ namespace WebApi.Controllers.Routine
             }
         }
         [HttpGet]
+        [Route("byMachineWithString")]
+        public IActionResult GetRoutineByEquipmentWithString(string id)
+        {
+            _ResponseDTO = new ResponseDTO();
+            try
+            {
+                var _id = int.Parse(id.Split('_')[0]);
+                return Ok(_ResponseDTO.Success(_ResponseDTO, _logic.GetRoutineByEquipment(_id)));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(_ResponseDTO.Failed(_ResponseDTO, e));
+            }
+        }
+        [HttpGet]
         [Route("byMachineAndRoutineCategory/{idEquipment:int},{idRoutineCategory:int}")]
         public IActionResult GetRoutineByEquipmentAndRoutineCategory(int idEquipment, int idRoutineCategory)
         {
