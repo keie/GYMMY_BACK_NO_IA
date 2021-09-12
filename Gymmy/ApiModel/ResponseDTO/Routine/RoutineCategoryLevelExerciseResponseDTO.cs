@@ -18,5 +18,7 @@ namespace ApiModel.ResponseDTO.Routine
         public string Model3D { get; set; }
         public string Marker { get; set; }
         public string Exercise { get; set; }
+        public string ExerciseDescription { get; set; }
+        public string Audio { get; set; }
     }
 }
