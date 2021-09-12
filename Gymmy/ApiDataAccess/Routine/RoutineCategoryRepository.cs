@@ -40,20 +40,20 @@ namespace ApiDataAccess.Routine
             }
         }
 
-        public IEnumerable<RoutineResponseDTO> GetRoutineByEquipmentAndRoutineCategory(int idEquipment, int IdRoutindCategory)
+        public IList<RoutineResponseDTO> GetRoutineByEquipmentAndRoutineCategory(int idEquipment, int IdRoutindCategory)
         {
             var dynamicParameters = new DynamicParameters(new
             {
                 pIdEquipment = idEquipment,
                 pIdRoutindCategory= IdRoutindCategory
             });
-            string sql = @"select r.id,r.[description] as 'routineDescription',rcl.[name],rcl.[description],r.repetitions from RoutineCategory rc inner join
+            string sql = @"select r.id,r.[description] as 'routineDescription',r.IdExcercise,rcl.id AS IdRoutineCategoryLevel,rcl.[name],rcl.[description],r.repetitions,r.photo,r.model3D,r.marker from RoutineCategory rc inner join
                         RoutineCategoryLevel rcl on rc.id=rcl.idRoutineCategory  inner join 
                         Routine r on r.idRoutineCategoryLevel=rcl.id inner join
                         Equipment e on e.id=r.idEquipment WHERE r.idEquipment=@pIdEquipment and rcl.idRoutineCategory=@pIdRoutindCategory and rc.id=@pIdRoutindCategory";
             using (var connection = new SqlConnection(_connectionString))
             {
-                return connection.Query<RoutineResponseDTO>(
+                return (IList<RoutineResponseDTO>)connection.Query<RoutineResponseDTO>(
                     sql, dynamicParameters
                     );
             }

@@ -7,6 +7,7 @@ using ApiUnitOfWork.General;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace ApiLogic.Implementations.Routine
 {
@@ -102,11 +103,28 @@ namespace ApiLogic.Implementations.Routine
             }
         }
 
-        public IEnumerable<RoutineResponseDTO> GetRoutineByEquipmentAndRoutineCategory(int idEquipment, int IdRoutindCategory)
+        public IList<RoutineWithLevelsResponseDTO> GetRoutineByEquipmentAndRoutineCategory(int idEquipment, int IdRoutindCategory)
         {
             try
             {
-                return _unitOfWork.IRoutineCategory.GetRoutineByEquipmentAndRoutineCategory(idEquipment, IdRoutindCategory);
+                IList<RoutineWithLevelsResponseDTO> routineLevelsDTO = new List<RoutineWithLevelsResponseDTO>();
+                var list = _unitOfWork.IRoutineCategory.GetRoutineByEquipmentAndRoutineCategory(idEquipment, IdRoutindCategory);
+                var test = list.GroupBy(x => x.IdExcercise).Distinct();
+                foreach (var x in test)
+                {
+                    RoutineWithLevelsResponseDTO dto = new RoutineWithLevelsResponseDTO();
+                    IList<LevelResponseDTO> levelListDTO = new List<LevelResponseDTO>();
+                    foreach (var y in x)
+                    {
+                        dto.Mapper(dto, y);
+                        LevelResponseDTO levelDTO = new LevelResponseDTO();
+                        levelDTO.Mapper(levelDTO, y);
+                        levelListDTO.Add(levelDTO);
+                    }
+                    dto.Levels = levelListDTO;
+                    routineLevelsDTO.Add(dto);
+                }
+                return routineLevelsDTO;
             }
             catch (Exception e)
             {

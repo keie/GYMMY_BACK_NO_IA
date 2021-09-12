@@ -10,6 +10,6 @@ namespace ApiRepositories.Routine
     public interface IRoutineCategoryRepository : IRepository<RoutineCategory>
     {
         public IEnumerable<RoutineCategoryResponseDTO> GetRoutineByEquipment(int idEquipment);
-        public IEnumerable<RoutineResponseDTO> GetRoutineByEquipmentAndRoutineCategory(int idEquipment,int IdRoutindCategory);
+        public IList<RoutineResponseDTO> GetRoutineByEquipmentAndRoutineCategory(int idEquipment,int IdRoutindCategory);
     }
 }
