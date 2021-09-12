@@ -66,7 +66,7 @@ namespace ApiDataAccess.Routine
             {
                 pIdRoutineCategoryLevel = idRoutineCategoryLevel
             });
-            string sql = @"select r.*, e.name as Exercise from Routine r inner join Exercise e on(r.idExcercise = e.id) 
+            string sql = @"select r.*, e.name as Exercise, e.description as ExerciseDescription from Routine r inner join Exercise e on(r.idExcercise = e.id) 
             where r.idRoutineCategoryLevel = @pIdRoutineCategoryLevel";
             using (var connection = new SqlConnection(_connectionString))
             {
