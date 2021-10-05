@@ -19,6 +19,7 @@ namespace ApiUnitOfWork.General
         IMarkerRepository IMarker { get; }
         IEquipmentRepository IEquipment { get; }
         IExerciseRepository IExercise { get; }
+        IExercisePhotoRepository IExercisePhotos { get; }
 
     }
 }

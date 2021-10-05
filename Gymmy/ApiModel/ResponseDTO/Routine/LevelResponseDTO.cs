@@ -13,6 +13,7 @@ namespace ApiModel.ResponseDTO.Routine
         public string Photo { get; set; }
         public string Model3D { get; set; }
         public string Marker { get; set; }
+        public string Audio { get; set; }
 
         public LevelResponseDTO Mapper(LevelResponseDTO dto, RoutineResponseDTO obj)
         {
@@ -23,6 +24,7 @@ namespace ApiModel.ResponseDTO.Routine
             dto.Photo = obj.Photo;
             dto.Model3D = obj.Model3D;
             dto.Marker = obj.Marker;
+            dto.Audio = obj.Audio;
             return dto;
         }
     }

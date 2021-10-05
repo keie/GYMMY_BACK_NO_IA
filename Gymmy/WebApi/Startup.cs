@@ -57,6 +57,7 @@ namespace WebApi
             services.AddTransient<IRoutineCategoryLogic, RoutineCategoryLogic>();
             services.AddTransient<IRoutineCategoryLevelLogic, RoutineCategoryLevelLogic>();
             services.AddTransient<IExceptionCustomizedLogic, ExceptionCustomizedLogic>();
+            services.AddTransient<IExercisePhotosLogic, ExercisePhotosLogic>();
             services.AddSingleton<IUnitOfWork>(option => new UnitOfWork(
                     Configuration.GetConnectionString("gymmy")
             ));

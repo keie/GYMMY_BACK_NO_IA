@@ -23,6 +23,7 @@ namespace ApiDataAccess.General
         public IMarkerRepository IMarker { get; }
         public IEquipmentRepository IEquipment { get; }
         public IExerciseRepository IExercise { get; }
+        public IExercisePhotoRepository IExercisePhotos { get; }
         
         public UnitOfWork(string connectionString)
         {
@@ -33,6 +34,7 @@ namespace ApiDataAccess.General
             IEquipment = new EquipmentRepository(connectionString);
             IExercise = new ExerciseRepository(connectionString);
             IMarker = new MarkerRepository(connectionString);
+            IExercisePhotos = new ExercisePhotosRepository(connectionString);
         }
 
         

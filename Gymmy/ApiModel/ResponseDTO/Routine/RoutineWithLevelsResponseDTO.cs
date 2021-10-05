@@ -9,6 +9,7 @@ namespace ApiModel.ResponseDTO.Routine
         public int Id { get; set; }
         public int IdExcercise { get; set; }
         public string RoutineDescription { get; set; }
+        public string Audio { get; set; }
         public IList<LevelResponseDTO> Levels { get; set; }
 
         public RoutineWithLevelsResponseDTO Mapper(RoutineWithLevelsResponseDTO dto, RoutineResponseDTO obj)
@@ -16,6 +17,7 @@ namespace ApiModel.ResponseDTO.Routine
             dto.Id = obj.Id;
             dto.IdExcercise = obj.IdExcercise;
             dto.RoutineDescription = obj.RoutineDescription;
+            dto.Audio = obj.Audio;
             return dto;
         }
     }
