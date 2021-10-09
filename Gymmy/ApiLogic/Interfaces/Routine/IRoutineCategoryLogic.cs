@@ -15,7 +15,8 @@ namespace ApiLogic.Interfaces.Routine
         public IEnumerable<RoutineCategory> GetList();
         public IList<RoutineCategoryWithLevelsResponseDTO> GetListWithLevels();
         public RoutineCategoryWithListRoutinesResponseDTO GetRoutineByEquipment(int idEquipment);
-        public IEnumerable<RoutineResponseDTO> GetRoutineByEquipmentAndRoutineCategory(int idEquipment, int IdRoutindCategory);
+        public IList<RoutineWithLevelsResponseDTO> GetRoutineByEquipmentAndRoutineCategory(int idEquipment, int IdRoutindCategory);
+        //public IEnumerable<RoutineResponseDTO> GetRoutineByEquipmentAndRoutineCategory(int idEquipment, int IdRoutindCategory);
         public IEnumerable<RoutineCategoryLevelExerciseResponseDTO> GetRoutineExercisesByRoutineCategoryLevel(int idRoutineCategoryLevel);
     }
 }

@@ -59,7 +59,7 @@ namespace WebApi
             services.AddTransient<IExceptionCustomizedLogic, ExceptionCustomizedLogic>();
             services.AddTransient<IExercisePhotosLogic, ExercisePhotosLogic>();
             services.AddSingleton<IUnitOfWork>(option => new UnitOfWork(
-                    Configuration.GetConnectionString("gymmy-minerva")
+                    Configuration.GetConnectionString("gymmy")
             ));
             var tokenProvider = new JwtProvider("issuer", "audience", "profexorrr_20000");
             services.AddSingleton<ITokenProvider>(tokenProvider);
