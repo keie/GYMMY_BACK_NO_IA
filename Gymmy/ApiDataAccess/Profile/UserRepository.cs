@@ -31,5 +31,21 @@ namespace ApiDataAccess.Profile
                     sql, parameters);
             }
         }
+
+        public int UpdateProfile(Users obj)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@email", obj.Email);
+            parameters.Add("@name", obj.Name);
+            parameters.Add("@photo", obj.Photo);
+            parameters.Add("@id", obj.Id);
+            string sql = @" UPDATE Users set email=@email, name=@name, photo=@photo where id=@id";
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                return connection.Execute(
+                    sql, parameters
+                );
+            }
+        }
     }
 }

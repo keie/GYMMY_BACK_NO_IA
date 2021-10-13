@@ -16,5 +16,6 @@ namespace ApiRepositories.Profile
         /// the implementation interface is on DataAccess 
         /// </remarks>
         Users ValidateUser(LoginRequestDTO dto);
+        public int UpdateProfile(Users obj);
     }
 }
