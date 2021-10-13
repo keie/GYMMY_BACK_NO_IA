@@ -3,17 +3,22 @@ using ApiLogic.Implementations.EquipmentLogic;
 using ApiLogic.Implementations.Exercise;
 using ApiLogic.Implementations.General;
 using ApiLogic.Implementations.JWT;
+using ApiLogic.Implementations.Mail;
 using ApiLogic.Implementations.Marker;
+using ApiLogic.Implementations.Media;
 using ApiLogic.Implementations.Profile;
 using ApiLogic.Implementations.Routine;
 using ApiLogic.Interfaces.EquipmentLogic;
 using ApiLogic.Interfaces.Exercise;
 using ApiLogic.Interfaces.General;
 using ApiLogic.Interfaces.JWT;
+using ApiLogic.Interfaces.Mail;
 using ApiLogic.Interfaces.Marker;
+using ApiLogic.Interfaces.Media;
 using ApiLogic.Interfaces.Profile;
 using ApiLogic.Interfaces.Routine;
 using ApiUnitOfWork.General;
+using Azure.Storage.Blobs;
 using JWT.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -48,6 +53,7 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            services.Configure<MailSettings>(Configuration.GetSection("EmailConfiguration"));
             services.AddTransient<IUserLogic,UserLogic>();
             services.AddTransient<ITokenLogic, TokenLogic>();
             services.AddTransient<IEquipmentLogic, EquipmentLogic>();
@@ -58,8 +64,13 @@ namespace WebApi
             services.AddTransient<IRoutineCategoryLevelLogic, RoutineCategoryLevelLogic>();
             services.AddTransient<IExceptionCustomizedLogic, ExceptionCustomizedLogic>();
             services.AddTransient<IExercisePhotosLogic, ExercisePhotosLogic>();
+            services.AddSingleton(IServiceProvider => new BlobServiceClient(Configuration.GetValue<string>("AzureBlobStorageConnectionString")));
+            services.AddScoped<IMediaLogic, MediaLogic>();
+            services.AddScoped<IBlobLogic, BlobLogic>();
+            services.AddScoped<IMailLogic, MailLogic>();
+
             services.AddSingleton<IUnitOfWork>(option => new UnitOfWork(
-                    Configuration.GetConnectionString("gymmy")
+                    Configuration.GetConnectionString("gymmy-minerva")
             ));
             var tokenProvider = new JwtProvider("issuer", "audience", "profexorrr_20000");
             services.AddSingleton<ITokenProvider>(tokenProvider);

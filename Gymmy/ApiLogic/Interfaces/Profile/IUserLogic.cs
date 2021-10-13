@@ -11,8 +11,9 @@ namespace ApiLogic.Interfaces.Profile
     {
         public Users ValidateUser(LoginRequestDTO dto);
         public int Insert(UsersRequestDTO dto);
-        public bool Update(UsersRequestDTO dto);
+        public Users Update(UsersRequestDTO dto);
         public Users GetById(int id);
         public IEnumerable<Users> GetList();
+        public void RecoverPassword();
     }
 }

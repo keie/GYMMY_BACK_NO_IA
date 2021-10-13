@@ -9,23 +9,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5838DA6D-5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{73A2C4DB-90AA-47D5-BD95-1111394BC4D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWT", "JWT\JWT.csproj", "{F9102896-5C59-49F7-9BB9-BB2094EB446A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JWT", "JWT\JWT.csproj", "{F9102896-5C59-49F7-9BB9-BB2094EB446A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiModel", "ApiModel\ApiModel.csproj", "{D32BEC5F-CB09-4D7F-A2AE-177C97D09B00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiModel", "ApiModel\ApiModel.csproj", "{D32BEC5F-CB09-4D7F-A2AE-177C97D09B00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiRepositories", "ApiRepositories\ApiRepositories.csproj", "{A1C55FDE-B3AC-428D-9755-E1EFEA3F3EC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiRepositories", "ApiRepositories\ApiRepositories.csproj", "{A1C55FDE-B3AC-428D-9755-E1EFEA3F3EC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiUnitOfWork", "ApiUnitOfWork\ApiUnitOfWork.csproj", "{44D31FF3-AF6F-45C6-854D-4EBDCF5E3C94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiUnitOfWork", "ApiUnitOfWork\ApiUnitOfWork.csproj", "{44D31FF3-AF6F-45C6-854D-4EBDCF5E3C94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiDataAccess", "ApiDataAccess\ApiDataAccess.csproj", "{47D488E3-734C-4D8D-9DF9-FC28B738264E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiDataAccess", "ApiDataAccess\ApiDataAccess.csproj", "{47D488E3-734C-4D8D-9DF9-FC28B738264E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiLogic", "ApiLogic\ApiLogic.csproj", "{27C487DC-50CA-432B-8EF5-EB3B32D24524}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiLogic", "ApiLogic\ApiLogic.csproj", "{27C487DC-50CA-432B-8EF5-EB3B32D24524}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{7E894DD4-0174-4D19-A6AA-989754876E8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{7E894DD4-0174-4D19-A6AA-989754876E8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryption", "Encryption\Encryption.csproj", "{1EA436A4-B932-47E2-B221-A8ADE8E77693}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encryption", "Encryption\Encryption.csproj", "{1EA436A4-B932-47E2-B221-A8ADE8E77693}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Settings", "Settings\Settings.csproj", "{7B105BE7-43B4-4B19-81C0-32A6322673DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Settings", "Settings\Settings.csproj", "{7B105BE7-43B4-4B19-81C0-32A6322673DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
