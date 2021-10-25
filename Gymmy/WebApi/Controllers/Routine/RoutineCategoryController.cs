@@ -149,6 +149,5 @@ namespace WebApi.Controllers.Routine
                 return BadRequest(_ResponseDTO.Failed(_ResponseDTO, e));
             }
         }
-
     }
 }

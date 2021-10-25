@@ -8,6 +8,7 @@ namespace ApiModel.ResponseDTO.Routine
     {
         public int Id { get; set; }
         public int IdExcercise { get; set; }
+        public string RoutineName { get; set; }
         public string RoutineDescription { get; set; }
         public string Audio { get; set; }
         public IList<LevelResponseDTO> Levels { get; set; }

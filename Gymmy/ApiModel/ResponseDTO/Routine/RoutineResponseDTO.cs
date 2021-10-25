@@ -12,6 +12,7 @@ namespace ApiModel.ResponseDTO.Routine
         public string RoutineDescription { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public int PowerQuantity { get; set; }
         public int Repetitions { get; set; }
         public string Photo { get; set; }
         public string Model3D { get; set; }

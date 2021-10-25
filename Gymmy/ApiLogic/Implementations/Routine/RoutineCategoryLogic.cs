@@ -105,16 +105,16 @@ namespace ApiLogic.Implementations.Routine
             RoutineCategoryWithListRoutinesResponseDTO dto = new RoutineCategoryWithListRoutinesResponseDTO();
             try
             {
-                var list = _unitOfWork.IRoutineCategory.GetRoutineByEquipment(idEquipment);
-                foreach (var x in list)
+                var listRoutineCategory = _unitOfWork.IRoutineCategory.GetRoutineByEquipment(idEquipment);
+                foreach (var routineCategory in listRoutineCategory)
                 {
                     List<RoutineCategory> routines = new List<RoutineCategory>();
-                    dto.Equipment = x.Equipment;
-                    foreach (var y in list)
+                    dto.Equipment = routineCategory.Equipment;
+                    foreach (var routineCategorySecondIterator in listRoutineCategory)
                     {
-                        if (x.Equipment.Id == y.Equipment.Id)
+                        if (routineCategory.Equipment.Id == routineCategorySecondIterator.Equipment.Id)
                         {
-                            routines.Add(y.RoutineCategory);
+                            routines.Add(routineCategorySecondIterator.RoutineCategory);
                         }
                     }
                     dto.Routines = routines;
@@ -132,17 +132,16 @@ namespace ApiLogic.Implementations.Routine
             try
             {
                 IList<RoutineWithLevelsResponseDTO> routineLevelsDTO = new List<RoutineWithLevelsResponseDTO>();
-                var list = _unitOfWork.IRoutineCategory.GetRoutineByEquipmentAndRoutineCategory(idEquipment, IdRoutindCategory);
-                var test = list.GroupBy(x => x.IdExcercise).Distinct();
-                foreach (var x in test)
+                var list = _unitOfWork.IRoutineCategory.GetRoutineByEquipmentAndRoutineCategory(idEquipment, IdRoutindCategory).GroupBy(x => x.IdExcercise).Distinct();
+                foreach (var routineAndLevels in list)
                 {
                     RoutineWithLevelsResponseDTO dto = new RoutineWithLevelsResponseDTO();
                     IList<LevelResponseDTO> levelListDTO = new List<LevelResponseDTO>();
-                    foreach (var y in x)
+                    foreach (var level in routineAndLevels)
                     {
-                        dto.Mapper(dto, y);
+                        dto.Mapper(dto, level);
                         LevelResponseDTO levelDTO = new LevelResponseDTO();
-                        levelDTO.Mapper(levelDTO, y);
+                        levelDTO.Mapper(levelDTO, level);
                         levelListDTO.Add(levelDTO);
                     }
                     dto.Levels = levelListDTO;
