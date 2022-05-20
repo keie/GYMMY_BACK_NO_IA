@@ -100,6 +100,30 @@ namespace ApiLogic.Implementations.Routine
             }
         }
 
+        public IList<RoutineCategoryWithLevelsResponseDTO> GetListWithLevelsAndType(int type)
+        {
+            IList<RoutineCategoryWithLevelsResponseDTO> response = new List<RoutineCategoryWithLevelsResponseDTO>();
+            try
+            {
+                var list = _unitOfWork.IRoutineCategory.GetListByType(type);
+                var levelList = new List<RoutineCategoryLevel>(_unitOfWork.IRoutineCategoryLevel.GetListByType(type));
+                foreach (var routineCategory in list)
+                {
+                    RoutineCategoryWithLevelsResponseDTO categoryWithLevel = new RoutineCategoryWithLevelsResponseDTO();
+
+                    categoryWithLevel.RoutineCategory = routineCategory;
+                    categoryWithLevel.RoutineCategoryLevels = levelList.FindAll(level => level.IdRoutineCategory == routineCategory.Id);
+
+                    response.Add(categoryWithLevel);
+                }
+                return response;
+            }
+            catch (Exception e)
+            {
+                throw _logicExceptionCustomizedLogic.Decision(_option, e);
+            }
+        }
+
         public RoutineCategoryWithListRoutinesResponseDTO GetRoutineByEquipment(int idEquipment)
         {
             RoutineCategoryWithListRoutinesResponseDTO dto = new RoutineCategoryWithListRoutinesResponseDTO();
@@ -161,6 +185,18 @@ namespace ApiLogic.Implementations.Routine
             try
             {
                 return _unitOfWork.IRoutineCategory.GetRoutineExercisesByRoutineCategoryLevel(idRoutineCategoryLevel);
+            }
+            catch (Exception e)
+            {
+                throw _logicExceptionCustomizedLogic.Decision(_option, e);
+            }
+        }
+
+        public IEnumerable<RoutineCategoryLevelExerciseResponseDTO> GetRoutineExercisesByRoutineCategoryLevelType(int idRoutineCategoryLevel, int type)
+        {
+            try
+            {
+                return _unitOfWork.IRoutineCategory.GetRoutineExercisesByRoutineCategoryLevelType(idRoutineCategoryLevel, type);
             }
             catch (Exception e)
             {

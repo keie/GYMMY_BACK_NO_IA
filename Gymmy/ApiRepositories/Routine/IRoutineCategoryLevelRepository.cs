@@ -8,5 +8,6 @@ namespace ApiRepositories.Routine
 {
     public interface IRoutineCategoryLevelRepository : IRepository<RoutineCategoryLevel>
     {
+        public IEnumerable<RoutineCategoryLevel> GetListByType(int type);
     }
 }

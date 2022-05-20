@@ -74,5 +74,43 @@ namespace ApiDataAccess.Routine
                     );
             }
         }
+
+        public IEnumerable<RoutineCategory> GetListByType(int type)
+        {
+            var dynamicParameters = new DynamicParameters(new
+            {
+                type = type
+            });
+            string sql = @"select distinct rc.* from RoutineCategory rc
+            inner join RoutineCategoryLevel rcl on (rcl.idRoutineCategory = rc.id)
+            inner join Routine r on (r.idRoutineCategoryLevel = rcl.id)
+            inner join Exercise e on (e.id = r.idExcercise) and (e.[type] = @type or e.[type]=  4)";
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                return connection.Query<RoutineCategory>(
+                    sql, dynamicParameters
+                    );
+            }
+        }
+
+        public IEnumerable<RoutineCategoryLevelExerciseResponseDTO> GetRoutineExercisesByRoutineCategoryLevelType(int idRoutineCategoryLevel, int type)
+        {
+            var dynamicParameters = new DynamicParameters(new
+            {
+                pIdRoutineCategoryLevel = idRoutineCategoryLevel,
+                pType = type
+            });
+            string sql = @"select r.*, e.name as Exercise, e.description as ExerciseDescription from Routine r 
+            inner join Exercise e on(r.idExcercise = e.id) 
+            where r.idRoutineCategoryLevel = @pIdRoutineCategoryLevel and (e.[type]= @pType or e.[type]=  4)";
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                return connection.Query<RoutineCategoryLevelExerciseResponseDTO>(
+                    sql, dynamicParameters
+                    );
+            }
+        }
+
     }
 }

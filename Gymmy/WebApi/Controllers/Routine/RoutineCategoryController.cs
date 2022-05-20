@@ -63,6 +63,22 @@ namespace WebApi.Controllers.Routine
         }
 
         [HttpGet]
+        [Route("levels/{type:int}")]
+        public IActionResult GetListWithLevels(int type)
+        {
+            _ResponseDTO = new ResponseDTO();
+            try
+            {
+                return Ok(_ResponseDTO.Success(_ResponseDTO, _logic.GetListWithLevelsAndType(type)));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(_ResponseDTO.Failed(_ResponseDTO, e));
+            }
+        }
+
+
+        [HttpGet]
         [Route("levels")]
         public IActionResult GetListWithLevels()
         {
@@ -143,6 +159,21 @@ namespace WebApi.Controllers.Routine
             try
             {
                 return Ok(_ResponseDTO.Success(_ResponseDTO, _logic.GetRoutineExercisesByRoutineCategoryLevel(idRoutineCategoryLevel)));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(_ResponseDTO.Failed(_ResponseDTO, e));
+            }
+        }
+
+        [HttpGet]
+        [Route("byRoutineCategoryLevel/{idRoutineCategoryLevel:int}/{type:int}")]
+        public IActionResult GetRoutineExercisesByRoutineCategoryLevelType(int idRoutineCategoryLevel, int type)
+        {
+            _ResponseDTO = new ResponseDTO();
+            try
+            {
+                return Ok(_ResponseDTO.Success(_ResponseDTO, _logic.GetRoutineExercisesByRoutineCategoryLevelType(idRoutineCategoryLevel, type)));
             }
             catch (Exception e)
             {
