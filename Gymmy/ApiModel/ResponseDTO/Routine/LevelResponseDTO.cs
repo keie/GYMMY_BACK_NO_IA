@@ -14,6 +14,7 @@ namespace ApiModel.ResponseDTO.Routine
         public string Model3D { get; set; }
         public string Marker { get; set; }
         public string Audio { get; set; }
+        public decimal Time { get; set; }
 
         public LevelResponseDTO Mapper(LevelResponseDTO dto, RoutineResponseDTO obj)
         {
@@ -25,6 +26,7 @@ namespace ApiModel.ResponseDTO.Routine
             dto.Model3D = obj.Model3D;
             dto.Marker = obj.Marker;
             dto.Audio = obj.Audio;
+            dto.Time = obj.Time;
             return dto;
         }
     }

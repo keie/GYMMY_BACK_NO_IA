@@ -17,5 +17,7 @@ namespace ApiModel.ResponseDTO.Routine
         public string Model3D { get; set; }
         public string Marker { get; set; }
         public string Audio { get; set; }
+        public string ExerciseDescription { get; set; }
+        public decimal Time { get; set; }
     }
 }

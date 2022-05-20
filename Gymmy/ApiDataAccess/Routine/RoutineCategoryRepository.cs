@@ -47,10 +47,9 @@ namespace ApiDataAccess.Routine
                 pIdEquipment = idEquipment,
                 pIdRoutindCategory= IdRoutindCategory
             });
-            string sql = @"select r.id,r.[description] as 'routineDescription',r.IdExcercise,rcl.id AS IdRoutineCategoryLevel,rcl.[name],rcl.[description],r.repetitions,r.photo,r.model3D,r.marker,r.audio from RoutineCategory rc inner join
-                        RoutineCategoryLevel rcl on rc.id=rcl.idRoutineCategory  inner join 
-                        Routine r on r.idRoutineCategoryLevel=rcl.id inner join
-                        Equipment e on e.id=r.idEquipment WHERE r.idEquipment=@pIdEquipment and rcl.idRoutineCategory=@pIdRoutindCategory and rc.id=@pIdRoutindCategory";
+            string sql = @"select r.id,r.[description] as 'routineDescription',r.IdExcercise, ex.description as ExerciseDescription,rcl.id AS IdRoutineCategoryLevel,rcl.[name],rcl.[description],r.repetitions, r.[time],r.photo,r.model3D,r.marker,r.audio 
+                        from RoutineCategory rc inner join RoutineCategoryLevel rcl on rc.id=rcl.idRoutineCategory  inner join Routine r on r.idRoutineCategoryLevel=rcl.id
+						inner join Exercise ex on ex.id = r.idExcercise inner join Equipment e on e.id=r.idEquipment WHERE r.idEquipment=@pIdEquipment and rcl.idRoutineCategory=@pIdRoutindCategory and rc.id=@pIdRoutindCategory";
             using (var connection = new SqlConnection(_connectionString))
             {
                 return (IList<RoutineResponseDTO>)connection.Query<RoutineResponseDTO>(
