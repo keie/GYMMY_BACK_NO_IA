@@ -20,7 +20,7 @@ namespace ApiModel.RequestDTO.Mail
         {
             dto.Head = "Recuperación de Clave";
             dto.Title = "Por favor copie el código siguiente";
-            dto.Body = "El código de Recuperación es el siguiente:";
+            dto.Body = $"El código de Recuperación es el siguiente: {dto.Body}";
             dto.Foot = "Saludos Cordiales";
             dto.To = dto.To;
             dto.Subject = "[Soporte-Gymmy]";

@@ -31,10 +31,9 @@ namespace ApiLogic.Implementations.Mail
 
         public async Task SendEmail(MailRequestDTO dto)
         {
-
-            string body = BuildTemplateEmail(dto);
             try
             {
+                string body = BuildTemplateEmail(dto);
                 MailMessage mailMessage = new MailMessage(_mailSettings.Value.MailFrom, dto.To, dto.Subject, body);
                 mailMessage.IsBodyHtml = true;
                 SmtpClient smtpClient = new SmtpClient(_mailSettings.Value.Smtp);
@@ -56,8 +55,15 @@ namespace ApiLogic.Implementations.Mail
 
         public async void SendRecoveryAccount(MailRequestDTO dto)
         {
-            dto.MapperAccountRecoveryChangePassword(dto);
-            await SendEmail(dto);
+            try
+            {
+                dto.MapperAccountRecoveryChangePassword(dto);
+                await SendEmail(dto);
+            }
+            catch (Exception e)
+            {
+                throw _logicExceptionCustomizedLogic.Decision(_option, e);
+            }
         }
 
         public string BuildTemplateEmail(MailRequestDTO dto)

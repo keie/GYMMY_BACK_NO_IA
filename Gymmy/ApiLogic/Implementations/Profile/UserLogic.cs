@@ -85,25 +85,32 @@ namespace ApiLogic.Implementations.Profile
             }
         }
 
-        public void RecoverPassword()
+        public bool RecoverPassword(int idUser)
         {
-            Users obj = new Users();
+            bool result = false;
             try
             {
-                /*var user = _unitOfWork.IUser.GetById(idUser);
-                if(user !=null)
-                {*/
+                var user = _unitOfWork.IUser.GetById(idUser);
+                var newPassword = user.Password.Substring(0, 6);
+                user.Password = EncryptPass(newPassword);
+                result = _unitOfWork.IUser.Update(user);
+
+                if (user !=null)
+                {
                     _mailLogic.SendRecoveryAccount(new MailRequestDTO
                     {
-                      
+                        To = user.Email,
+                        Body = newPassword
                     });
 
-                //}
+                }
             }
             catch (Exception e)
             {
                 throw _logicExceptionCustomizedLogic.Decision(_option, e);
             }
+
+            return result;
         }
 
         public Users GetById(int id)

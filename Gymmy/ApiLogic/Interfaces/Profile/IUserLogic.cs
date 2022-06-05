@@ -14,6 +14,6 @@ namespace ApiLogic.Interfaces.Profile
         public Users Update(UsersRequestDTO dto);
         public Users GetById(int id);
         public IEnumerable<Users> GetList();
-        public void RecoverPassword();
+        public bool RecoverPassword(int idUser);
     }
 }

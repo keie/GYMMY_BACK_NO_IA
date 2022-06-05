@@ -58,13 +58,12 @@ namespace WebApi.Controllers.JWT
 
         [HttpPut]
         [Route("recoverPassword")]
-        public IActionResult RecoverPassword()
+        public IActionResult RecoverPassword([FromBody] UsersRequestDTO dto)
         {
             _ResponseDTO = new ResponseDTO();
             try
             {
-                _logic.RecoverPassword();
-                return Ok(_ResponseDTO.Success(_ResponseDTO, null));
+                return Ok(_ResponseDTO.Success(_ResponseDTO, _logic.RecoverPassword(dto.Id)));
             }
             catch (Exception e)
             {
